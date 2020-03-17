@@ -25,6 +25,8 @@
 package com.googlecode.jmep;
 
 
+import com.googlecode.jmep.exception.ExpressionException;
+
 /**
  * This is an exception that occurs on an unsupported operation.
  *

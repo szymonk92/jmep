@@ -21,32 +21,42 @@
  *
  */
 
-package com.googlecode.jmep;
+
+package com.googlecode.jmep.exception;
 
 /**
- * This is an exception that occurs on access of an Undefined Function.
+ * This is the base class for all exceptions that can occur using the
+ * Expression Class.
  *
  * @author Jo Desmet
  */
-public class UndefinedFunctionException extends ExpressionException {
+public class ExpressionException extends Exception {
     private static final long serialVersionUID = 1L;
-    private final String functionName;
+    final private int position;
 
     /*
      * NOTE: The constructor should not defined public as it should only
      * be used within the package.
      */
-    public UndefinedFunctionException(int position, String name) {
-        super(position, "Undefined Function: " + name);
-        this.functionName = name;
+    protected ExpressionException(int position, String error, Throwable x) {
+        super("ERROR(@" + position + "): " + error, x);
+        this.position = position;
+    }
+
+    /*
+     * NOTE: The constructor should not defined public as it should only
+     * be used within the package.
+     */
+    public ExpressionException(int position, String error) {
+        this(position, error, null);
     }
 
     /**
-     * Gets the name of the Undefined Function.
+     * Gets the position where the error occurred.
      *
-     * @return the name of the Undefined Function.
+     * @return the position of the problem.
      */
-    public String getFunctionName() {
-        return functionName;
+    public int getPosition() {
+        return position;
     }
-}
+} 

@@ -23,6 +23,9 @@
 
 package com.googlecode.jmep;
 
+import com.googlecode.jmep.exception.ExpressionException;
+import com.googlecode.jmep.exception.IllegalExpressionStateException;
+import com.googlecode.jmep.exception.UndefinedVariableException;
 import com.googlecode.jmep.function.Function;
 import com.googlecode.jmep.function.Variable;
 
@@ -214,7 +217,7 @@ public class Expression {
      * Expressions are evaluated strictly by default.
      *
      * @param expression the string containing the mathematical expression.
-     * @throws com.googlecode.jmep.ExpressionException
+     * @throws ExpressionException
      * @see ExpressionException
      */
     public Expression(String expression) throws ExpressionException {
@@ -693,7 +696,7 @@ public class Expression {
      * Evaluates the expression. This will do all necessary late binding.
      *
      * @return the evaluated expression, which can be Double, Integer or String.
-     * @throws com.googlecode.jmep.ExpressionException
+     * @throws ExpressionException
      */
     public Object evaluate() throws ExpressionException {
         //Token token;

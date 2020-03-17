@@ -21,32 +21,37 @@
  *
  */
 
-package com.googlecode.jmep;
+
+package com.googlecode.jmep.exception;
 
 /**
- * This is an exception that occurs on access of an Undefined Variable.
+ * This exception indicates that during the parsing or processing
+ * of the expression, the code went into an unexpected state. This is severe
+ * enough that normal execution cannot continue.
+ * This exception would be an indication of programmer error, and needs further
+ * investigation.
  *
  * @author Jo Desmet
  */
-public class UndefinedVariableException extends ExpressionException {
+public class IllegalExpressionStateException extends IllegalStateException {
     private static final long serialVersionUID = 1L;
-    private final String variableName;
+    private int position;
 
-    /*
-     * NOTE: The constructor should not defined public as it should only
-     * be used within the package.
-     */
-    public UndefinedVariableException(int position, String name) {
-        super(position, "Undefined Variable: " + name);
-        variableName = name;
+    IllegalExpressionStateException(int position, String message, Throwable x) {
+        super("ERROR(@" + position + "): " + message, x);
+        this.position = position;
     }
 
-    /**
-     * Gets the name of the Undefined Variable.
-     *
-     * @return the name of the Undefined Variable.
-     */
-    public String getVariableName() {
-        return variableName;
+    public IllegalExpressionStateException(int position) {
+        this(position, "Invalid State", null);
+    }
+
+    public IllegalExpressionStateException(int position, String message) {
+        this(position, message, null);
+    }
+
+    public IllegalExpressionStateException() {
+        this(-1, "Invalid State", null);
     }
 }
+

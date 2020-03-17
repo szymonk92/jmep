@@ -1,5 +1,7 @@
 package com.googlecode.jmep;
 
+import com.googlecode.jmep.exception.ExpressionException;
+
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 

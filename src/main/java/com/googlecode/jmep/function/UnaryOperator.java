@@ -12,6 +12,7 @@ package com.googlecode.jmep.function;
  * @author jdesmet
  */
 public interface UnaryOperator<T, R> extends java.util.function.Function<T, R> {
+
     @Override
     R apply(T t);
 
