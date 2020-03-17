@@ -65,8 +65,9 @@ public class BasicEnvironment extends Environment {
         register(MIN, Double.class, t -> -t);
 
         // Register Upgrade Conversions
+
         register(Long.class, BigDecimal.class, BigDecimal::new);
-        register(Long.class, Double.class, Double::new);
+        register(Long.class, Double.class, t -> Double.parseDouble(t.toString()));
     }
 
     static void implementDefaultDouble(Environment env) {
@@ -111,9 +112,9 @@ public class BasicEnvironment extends Environment {
         env.register(MUL, String.class, Long.class, (String t, Long u) -> {
             if (u < 0) throw new IllegalArgumentException("Cannot repeat a string negative times");
             if (u == 0) return "";
-            String value = "";
+            StringBuilder value = new StringBuilder("");
             for (int i = 0; i < u; i++) {
-                value = value + t;
+                value.append(t);
             }
             return value;
         });
