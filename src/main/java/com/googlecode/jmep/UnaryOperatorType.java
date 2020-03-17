@@ -7,13 +7,11 @@
 package com.googlecode.jmep;
 
 /**
- *
  * @author jdesmet
  */
 public enum UnaryOperatorType {
-  PLS,
-  MIN,
-  NOT,
-  INV,
-  
+    PLS,
+    MIN,
+    NOT,
+    INV,
 }

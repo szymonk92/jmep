@@ -7,11 +7,10 @@
 package com.googlecode.jmep;
 
 /**
- *
- * @author jd3714
  * @param <T> Source Type
  * @param <U> Target Type
+ * @author jd3714
  */
 public interface UpgradeConversion<T, U> {
-  U apply(T t);
+    U apply(T t);
 }

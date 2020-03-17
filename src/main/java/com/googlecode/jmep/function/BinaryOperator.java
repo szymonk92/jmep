@@ -9,16 +9,14 @@ package com.googlecode.jmep.function;
 import java.util.function.BiFunction;
 
 /**
- *
- * @author jdesmet
  * @param <T> left operand type
  * @param <U> right operand type
  * @param <R> return type
- * 
+ * @author jdesmet
  */
 public interface BinaryOperator<T, U, R> extends BiFunction<T, U, R> {
 
-  @Override
-  R apply(T t, U u);
-  
+    @Override
+    R apply(T t, U u);
+
 }

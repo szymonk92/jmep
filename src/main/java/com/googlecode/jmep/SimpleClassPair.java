@@ -9,45 +9,41 @@ package com.googlecode.jmep;
 import java.util.Objects;
 
 /**
- *
  * @author jdesmet
  */
 public class SimpleClassPair<T, U> {
-  Class<T> t;
-  Class<U> u;
+    Class<T> t;
+    Class<U> u;
 
-  // Make it private to allow to cache some of the most common Pairs.
-  private SimpleClassPair(Class<T> t, Class<U> u) {
-    this.t = t;
-    this.u = u;
-  }
+    // Make it private to allow to cache some of the most common Pairs.
+    private SimpleClassPair(Class<T> t, Class<U> u) {
+        this.t = t;
+        this.u = u;
+    }
 
-  public static <T, U> SimpleClassPair<T, U> of(Class<T> t, Class<U> u) {
-    return new SimpleClassPair<>(t, u);
-  }
+    public static <T, U> SimpleClassPair<T, U> of(Class<T> t, Class<U> u) {
+        return new SimpleClassPair<>(t, u);
+    }
 
-  @Override
-  public int hashCode() {
-    int hash = 3;
-    return hash;
-  }
+    @Override
+    public int hashCode() {
+        int hash = 3;
+        return hash;
+    }
 
-  @Override
-  public boolean equals(Object obj) {
-    if (obj == null) {
-      return false;
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final SimpleClassPair<?, ?> other = (SimpleClassPair<?, ?>) obj;
+        if (!Objects.equals(this.t, other.t)) {
+            return false;
+        }
+      return Objects.equals(this.u, other.u);
     }
-    if (getClass() != obj.getClass()) {
-      return false;
-    }
-    final SimpleClassPair<?, ?> other = (SimpleClassPair<?, ?>) obj;
-    if (!Objects.equals(this.t, other.t)) {
-      return false;
-    }
-    if (!Objects.equals(this.u, other.u)) {
-      return false;
-    }
-    return true;
-  }
-  
+
 }
